@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import StarBoarderOutlineIcon from "@material-ui/icons/StarBorderOutlined";
+import StarIcon from "@material-ui/icons/Star";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { useSelector } from "react-redux";
 import { selectRoomId } from "../features/appSlice";
@@ -10,6 +11,7 @@ import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 
 function Chat() {
+  const [starred, setStarred] = useState(false);
   const chatRef = useRef(null);
   const roomId = useSelector(selectRoomId);
   const [roomDetails] = useDocument(
@@ -37,7 +39,17 @@ function Chat() {
               <h4>
                 <strong>#{roomDetails?.data().name}</strong>
               </h4>
-              <StarBoarderOutlineIcon />
+              <IconButton
+                onClick={() => {
+                  setStarred(!starred);
+                }}
+              >
+                {starred ? (
+                  <StarIcon></StarIcon>
+                ) : (
+                  <StarBoarderOutlineIcon></StarBoarderOutlineIcon>
+                )}
+              </IconButton>
             </HeaderLeft>
             <HeaderRight>
               <p>
@@ -90,16 +102,12 @@ const Header = styled.div`
 const HeaderLeft = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   > h4 {
     display: flex;
     text-transform: lowercase;
     margin-right: 10px;
-  }
-
-  > h4 > .MuiSvgIcon-root {
-    margin-left: 10px;
-    font-size: 18px;
   }
 `;
 
@@ -119,3 +127,10 @@ const HeaderRight = styled.div`
 const ChatMessages = styled.div``;
 
 const ChatBottom = styled.div``;
+
+const IconButton = styled.div`
+  > .MuiSvgIcon-root {
+    font-size: 16px;
+    padding-top: 5px;
+  }
+`;
