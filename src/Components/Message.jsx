@@ -8,7 +8,10 @@ function Message({ message, timestamp, user, userImage }) {
       <MessageInfo>
         <h4>
           {user}
-          {""} <span>{new Date(timestamp?.toDate()).toUTCString()}</span>
+          {""}{" "}
+          <span>
+            {new Date(timestamp?.toDate()).toLocaleTimeString("ko-KR")}
+          </span>
         </h4>
         <p>{message}</p>
       </MessageInfo>
@@ -21,18 +24,18 @@ export default Message;
 const MessageContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 
   > img {
-    height: 50px;
-    width: 50px;
+    height: 36px;
+    width: 36px;
     border-radius: 8px;
   }
 `;
 const MessageInfo = styled.div`
   padding-left: 10px;
   > h4 > span {
-    color: gray;
+    color: #616061 !important;
     font-weight: 300;
     margin-left: 4px;
     font-size: 10px;

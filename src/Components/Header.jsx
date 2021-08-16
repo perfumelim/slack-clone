@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Avatar } from "@material-ui/core";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import SearchIcon from "@material-ui/icons/Search";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -14,24 +15,23 @@ function Header() {
 
   return (
     <HeaderContainer>
-      {/*Header left*/}
       <HeaderLeft>
-        <HeaderAvatar
-          onClick={() => auth.signOut()}
-          src={user?.photoURL}
-          alt={user?.displayName}
-        />
         <AccessTimeIcon />
       </HeaderLeft>
-      {/*Header Search*/}
       <HeaderSearch>
         <SearchIcon />
         <input placeholder="Search" />
       </HeaderSearch>
-
-      {/*Header right*/}
       <HeaderRight>
         <HelpOutlineIcon />
+        <HeaderUser>
+          <HeaderAvatar
+            onClick={() => auth.signOut()}
+            src={user?.photoURL}
+            alt={user?.displayName}
+          />
+          <FiberManualRecordIcon />
+        </HeaderUser>
       </HeaderRight>
     </HeaderContainer>
   );
@@ -45,46 +45,39 @@ const HeaderContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
-  background-color: var(--slack-color);
+  background-color: var(--hover-color);
   color: white;
 `;
 
 const HeaderLeft = styled.div`
   display: flex;
-  flex: 0.3;
+  flex: 0.2;
   align-items: center;
-  margin-left: 20px;
+  justify-content: flex-end;
 
   > .MuiSvgIcon-root {
-    margin-left: auto;
-    margin-right: 30px;
-  }
-`;
-
-const HeaderAvatar = styled(Avatar)`
-  cursor: pointer;
-
-  :hover {
-    opacity: 0.8;
+    padding-right: 13px;
+    width: 22px;
+    height: 22px;
   }
 `;
 
 const HeaderSearch = styled.div`
   display: flex;
-  flex: 0.4;
+  flex: 0.5;
+  justify-content: center;
   padding: 0 50px;
   border-radius: 6px;
   background-color: #421f44;
   text-align: center;
   color: gray;
-  border: 1px gray solid;
+  border: 1px solid #684a68;
 
   > input {
     background-color: transparent;
     border: none;
     text-align: center;
-    min-width: 30vw;
+    min-width: 27vw;
     outline: 0;
     color: white;
   }
@@ -93,10 +86,34 @@ const HeaderSearch = styled.div`
 const HeaderRight = styled.div`
   flex: 0.3;
   display: flex;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const HeaderAvatar = styled(Avatar)`
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
+  > .MuiAvatar-img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+  }
+`;
+
+const HeaderUser = styled.div`
+  position: relative;
+  padding-right: 16px;
 
   > .MuiSvgIcon-root {
-    margin-left: auto;
-    margin-right: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 18px;
+    font-size: 14px;
+    color: green;
+    background-color: var(--hover-color);
+    border-radius: 45% 0;
   }
 `;

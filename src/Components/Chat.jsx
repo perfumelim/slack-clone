@@ -26,6 +26,19 @@ function Chat() {
         .orderBy("timestamp", "asc")
   );
 
+  const handleFav = () => {
+    if (!starred) {
+      db.collection("channels/starred").add({
+        favorite: true,
+      });
+    }
+  };
+
+  const addFavorite = () => {
+    setStarred(!starred);
+    handleFav();
+  };
+
   useEffect(() => {
     chatRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [roomId, loading]);
@@ -39,11 +52,7 @@ function Chat() {
               <h4>
                 <strong>#{roomDetails?.data().name}</strong>
               </h4>
-              <IconButton
-                onClick={() => {
-                  setStarred(!starred);
-                }}
-              >
+              <IconButton onClick={addFavorite}>
                 {starred ? (
                   <StarIcon></StarIcon>
                 ) : (
@@ -87,7 +96,7 @@ export default Chat;
 
 const ChatContainer = styled.div`
   flex: 0.7;
-  flex-grom: 1;
+  flex-grow: 1;
   overflow-y: scroll;
   margin-top: 60px;
 `;

@@ -4,6 +4,7 @@
 
 body {
   --slack-color: #3f0f40;
+  --hover-color: #350d36;
   overflow: hidden;
 
   margin: 0;

@@ -24,7 +24,7 @@ function Sidebar() {
     <SidebarContainer>
       <SidebarHeader>
         <SidebarInfo>
-          <h2> PERFUME</h2>
+          <h2> Workspace</h2>
           <h3>
             <FiberManualRecordIcon />
             {user.displayName}
@@ -59,7 +59,7 @@ const SidebarContainer = styled.div`
   flex: 0.3;
   border-top: 1px solid #49274b;
   max-width: 260px;
-  margin-top: 60px;
+  margin-top: 40px;
 
   > hr {
     margin-top: 10px;
@@ -72,6 +72,10 @@ const SidebarHeader = styled.div`
   display: flex;
   border-bottom: 1px solid #49274b;
   padding: 13px;
+
+  :hover {
+    background-color: #350d36;
+  }
 
   > .MuiSvgIcon-root {
     padding: 8px;
