@@ -19,8 +19,10 @@ function Header() {
         <AccessTimeIcon />
       </HeaderLeft>
       <HeaderSearch>
-        <SearchIcon />
-        <input placeholder="Search" />
+        <SearchBox>
+          <SearchIcon />
+          <input placeholder="Search" />
+        </SearchBox>
       </HeaderSearch>
       <HeaderRight>
         <HelpOutlineIcon />
@@ -68,10 +70,14 @@ const HeaderSearch = styled.div`
   justify-content: center;
   padding: 0 50px;
   border-radius: 6px;
-  background-color: #421f44;
+  background-color: #644665;
   text-align: center;
   color: gray;
-  border: 1px solid #684a68;
+  border: 1px solid #644665;
+`;
+
+const SearchBox = styled.div`
+  display: flex;
 
   > input {
     background-color: transparent;
@@ -79,6 +85,13 @@ const HeaderSearch = styled.div`
     text-align: center;
     min-width: 27vw;
     outline: 0;
+  }
+
+  > input::placeholder {
+    color: white;
+  }
+
+  > .MuiSvgIcon-root {
     color: white;
   }
 `;
