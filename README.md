@@ -1,12 +1,15 @@
-## Toy Project - Simple Slack 📨
+## Simple Slack 📨
 
 이 프로젝트는 Redux와 Styled Components를 연습해보기 위한 토이 프로젝트입니다. 메신저앱 Slack의 데스크탑 버전을 간단하게 따라 만들어보았습니다.
 
 ### ✔️ 기술스택
 
 -React
+
 -Firebase
+
 -Redux
+
 -Styled Components
 
 ### ✔️ 구현사항
