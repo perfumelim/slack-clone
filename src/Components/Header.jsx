@@ -83,7 +83,6 @@ const SearchBox = styled.div`
     background-color: transparent;
     border: none;
     text-align: center;
-    min-width: 27vw;
     outline: 0;
   }
 

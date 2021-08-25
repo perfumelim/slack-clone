@@ -9,9 +9,8 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import AppsIcon from "@material-ui/icons/Apps";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import AddIcon from "@material-ui/icons/Add";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -32,21 +31,19 @@ function Sidebar() {
         </SidebarInfo>
         <CreateIcon />
       </SidebarHeader>
-
       <SidebarOption Icon={InsertCommentIcon} title="Threads" />
       <SidebarOption Icon={InboxIcon} title="Mentions & reactions" />
       <SidebarOption Icon={DraftsIcon} title="Saved items" />
       <SidebarOption Icon={BookmarkBorderIcon} title="Channel browser" />
       <SidebarOption Icon={PeopleAltIcon} title="People & user groups" />
       <SidebarOption Icon={AppsIcon} title="Apps" />
-      <SidebarOption Icon={ExpandLessIcon} title="Show less" />
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
-      <hr />
-      <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
       {channels?.docs.map((doc) => (
         <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
       ))}
+      <SidebarOption Icon={AddBoxIcon} addChannelOption title="Add Channel" />
+      <hr />
     </SidebarContainer>
   );
 }
@@ -60,7 +57,6 @@ const SidebarContainer = styled.div`
   border-top: 1px solid #49274b;
   max-width: 260px;
   margin-top: 40px;
-
   > hr {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -72,11 +68,9 @@ const SidebarHeader = styled.div`
   display: flex;
   border-bottom: 1px solid #49274b;
   padding: 13px;
-
   :hover {
     background-color: #350d36;
   }
-
   > .MuiSvgIcon-root {
     padding: 8px;
     color: #49274b;
@@ -93,14 +87,12 @@ const SidebarInfo = styled.div`
     font-weight: 900;
     margin-bottom: 5px;
   }
-
   > h3 {
     display: flex;
     align-items: center;
     font-size: 13px;
     font-weight: 400;
   }
-
   > h3 > .MuiSvgIcon-root {
     font-size: 14px;
     margin-top: 1px;
